@@ -1,0 +1,9 @@
+{
+    "name": "@iluha168/bitset",
+    "version": "1.0.0",
+    "exports": "./src/mod.mts",
+
+    "publish": {
+        "exclude": ["tests"]
+    }
+}
