@@ -63,6 +63,12 @@ export class BitSet {
             yield this.get(i)
     }
 
+    /** Yields [key, value] pairs for every bit in the array. */
+    *entries(): Generator<[number, number]> {
+        for(let i = 0; i < this.length(); i++)
+            yield [i, this.get(i)]
+    }
+
     toString(): string {
         const bits = Array
             .from(this.bytes.subarray(0, BitSet.TO_STRING_BYTE_LIMIT))

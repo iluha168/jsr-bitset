@@ -64,13 +64,21 @@ Deno.test("BitSet", async t => {
         }
     })
 
-    await t.step("mutating bytes during iteration", () => {
+    await t.step("entries", () => {
         let i = 0;
-        for(const bit of bits){
+        for(const [entriesI, bit] of bits.entries()){
+            assertEquals(bit, bits.get(entriesI))
+            assertEquals(entriesI, i)
+
+            i++
+        }
+    })
+
+    await t.step("mutating bytes during iteration", () => {
+        for(const [i, bit] of bits.entries()){
             assertEquals(bit, bits.get(i))
 
             bits.bytes = new Uint8Array([Math.random() * 255])
-            i++
         }
     })
 })
